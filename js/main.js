@@ -34,8 +34,8 @@ function main () {
     /** 加载图片 */
     LLoadManage.load(
         [
-            {path : "./js/Block.js"},
-            {name : "img", path : "./images/img.jpg"}
+            {path : "../js/Block.js"},
+            {name : "img", path : "../images/img.jpg"}
         ],
         null,
         function (result) {
