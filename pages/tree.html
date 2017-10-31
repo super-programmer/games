@@ -180,6 +180,7 @@
                 $(this).addClass('c-tree-leaf_leave');
                 setTimeout(function(){
                     $(that).remove();
+                    $('.img').click();
                 },500)
             })
         })
@@ -187,7 +188,7 @@
             var that = this;
             setTimeout(function(){
                 $(that).removeClass('img-active');
-            },800)
+            },700)
             $(this).addClass('img-active');
         });
         var mycanvas = $('.myCanvas')[0].getContext('2d');
