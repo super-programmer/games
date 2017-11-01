@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="https://static.leke.cn/styles/common/global.css">
+    <style>
+        .box{
+            width:300px;
+            height:100px;
+            padding:60px 0;
+            margin:0 auto;
+            line-height:30px;
+            text-align:center;
+            overflow:hidden;
+        }
+        .b-con{
+            transform:translate3d(0,60px,0);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul class="b-con">
+            <li class="item">
+                11111
+            </li><li class="item">
+                11111
+            </li><li class="item">
+                11111
+            </li><li class="item">
+                11111
+            </li><li class="item">
+                11111
+            </li><li class="item">
+                11111
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="https://static.leke.cn/scripts/common/mobile/common.js"></script>
+<script>
+    var $dom = $('.b-con'),
+            star = '',
+            dur = '',
+            end = '';
+    $dom[0].addEventListener('touchstart', function (e) {
+        $maxheight = $dom.height()-60;
+        e.preventDefault();
+        star = e.touches[0].clientY;
+    });
+    $dom[0].addEventListener('touchmove', function (e) {
+        e.preventDefault();
+        end = e.touches[0].clientY;
+        dur = end-star
+        $dom.css('transform', 'translate3d(0,'+ dur +'px,0)');
+    });
+    $dom[0].addEventListener('touchend', function (e) {
+        e.preventDefault();
+        console.log(dur)
+        if(dur >= 60){
+            $dom.css('transform', 'translate3d(0,'+ 60 +'px,0)');
+        }else if(dur <= -$maxheight){
+            $dom.css('transform', 'translate3d(0,'+ -$maxheight +'px,0)');
+        }
+//        var touches = e.touches[0].clientY;
+//        console.log(touches);
+//        $dom.css('transform', 'translate3d(0,' + touches.clientY + 'px,0)');
+    });
+</script>
+</html>
