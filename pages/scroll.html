@@ -44,8 +44,12 @@
     var $dom = $('.b-con'),
             star = '',
             dur = '',
-            end = '';
+            end = '',
+            dy = '';
+    $dom.css('transform', 'translate3d(0,60px,0)');
     $dom[0].addEventListener('touchstart', function (e) {
+        var a = $dom.css("transform");
+        dy = a.match(/\-?[0-9]+\.?[0-9]*/g)[2];
         $maxheight = $dom.height()-60;
         e.preventDefault();
         star = e.touches[0].clientY;
@@ -53,20 +57,16 @@
     $dom[0].addEventListener('touchmove', function (e) {
         e.preventDefault();
         end = e.touches[0].clientY;
-        dur = end-star
+        dur = end - star + parseInt(dy);
         $dom.css('transform', 'translate3d(0,'+ dur +'px,0)');
     });
     $dom[0].addEventListener('touchend', function (e) {
         e.preventDefault();
-        console.log(dur)
         if(dur >= 60){
             $dom.css('transform', 'translate3d(0,'+ 60 +'px,0)');
         }else if(dur <= -$maxheight){
             $dom.css('transform', 'translate3d(0,'+ -$maxheight +'px,0)');
         }
-//        var touches = e.touches[0].clientY;
-//        console.log(touches);
-//        $dom.css('transform', 'translate3d(0,' + touches.clientY + 'px,0)');
     });
 </script>
 </html>
